@@ -2,7 +2,7 @@
 
 All following commands are run using the shell. Ubuntu 14.04 is used that has Python 3.4 installed.  
 
-Contents:
+##Contents:
     1. [Update/Upgrade the system](#1)
     2. [Install spatial libraries](#2)
     3. [Install Python related libraries and modules](#3)
