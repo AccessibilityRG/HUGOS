@@ -36,14 +36,14 @@ Before it is possible to use the database remotely we need to make changes to tw
  2. postgresql.conf
   
 
-Open and modify pg_hba.conf file
+(1) Open and modify pg_hba.conf file
 >   sudo nano /etc/postgresql/9.4/main/pg_hba.conf
 
 Allow all hosts from all IP's to connect to database by adding following line to the end of the file and save.
 >   host all all 0.0.0.0/0 md5
     
 
-Open and modify postgresql.conf file 
+(2) Open and modify postgresql.conf file 
 >   sudo nano /etc/postgresql/9.4/main/postgresql.conf
 
 Modify "peer" to "md5" on the line concerning postgres
