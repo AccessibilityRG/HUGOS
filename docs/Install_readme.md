@@ -10,7 +10,7 @@ Following docs shows how to set up everything using Ubuntu (Linux) operation sys
 ### How to?
 - [Install all required softwares and Python modules](softwares.md) 
 - [Configure Postgres/PostGIS](postgres_config.md)
-- Create Postgres/PostGIS database for:
+- [Create Postgres/PostGIS database for](pgdb_management.md):
     - Instagram
     - Twitter
 - Create process control and monitor tables for:
