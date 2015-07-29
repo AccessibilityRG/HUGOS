@@ -60,3 +60,4 @@ Restart the database
 
 After these database configurations we can create a new database for social media data and necessary tables to store the data and control/manage the data collection process. 
 [Continue and read the docs here.](pgdb_management.md)  
+
