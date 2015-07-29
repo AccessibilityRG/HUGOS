@@ -1,6 +1,6 @@
 # Postgres/PostGIS configurations
 
-In this document we:
+Contents:
 
 1. [Create a new user for Postgresql database](#1)
 2. [Open the server (database) to 'listen' the world (i.e. enable other servers/computers to insert data to our database)](#2).
