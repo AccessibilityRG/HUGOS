@@ -11,7 +11,7 @@
 >   # CREATE EXTENSION postgis_topology;
 
 **Create table for controlling the data collection**
-> CREATE TABLE process_control(
+>    CREATE TABLE process_control(
 
 >      id serial PRIMARY KEY,
 >      instance_name TEXT,
@@ -28,7 +28,7 @@
 >      commit_sequence INTEGER,
 >      skip_time INTEGER,
 >      restart_position INTEGER
->  );
+>      );
 
 Create a table for monitoring
 
