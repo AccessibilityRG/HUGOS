@@ -32,27 +32,23 @@ Check that you can log in as psql -U <yourusername>
 
 ## <a name="2"><a/>2. Open the database to listen the world
 Before it is possible to use the database remotely we need to make changes to two PostgreSQL configuration files:
- 1. postgresql.conf
- 2. pg_hba.conf
+ 1. pg_hba.conf 
+ 2. postgresql.conf
+  
 
-Open and modify pg_hba.conf file
+1. Open and modify pg_hba.conf file
 >   sudo nano /etc/postgresql/9.4/main/pg_hba.conf
-    
-Modify "peer" to "md5" on the line concerning postgres
 
-| Original | --> Modified |
+Allow all hosts from all IP's to connect to database by adding following line to the end of the file and save.
+>   host all all 0.0.0.0/0 md5
+    
+
+2. Open and modify postgresql.conf file 
+>   sudo nano /etc/postgresql/9.4/main/postgresql.conf
+
+Modify "peer" to "md5" on the line concerning postgres
+| Original | Modified |
 |----------| ---------|
 | _local   all   postgres   peer_ | _local   all   postgres   md5_ | 
-
-
->   sudo service postgresql restart
-
-
-Modify pg_hba.conf again and change peer to md5
->   sudo nano /etc/postgresql/9.4/main/pg_hba.conf
-     local      all     all     peer md5
-
-Restart the database again
->   sudo /etc/init.d/postgresql restart
 
 
