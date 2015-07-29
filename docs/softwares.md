@@ -36,7 +36,7 @@ Start python and try importing required modules (everything is working if errors
 >   $python3 
 >   > import geopandas, fiona, psycopg2, shapely, pytz, numpy, tweepy, instagram, pyproj
 
-_Exit Python by CNTRL + C._
+_Exit Python by CNTRL + D._
 
 ## <a name="4"></a>4. Postgres / PostGIS
 >   apt-get install postgresql-9.4-postgis-2.1
