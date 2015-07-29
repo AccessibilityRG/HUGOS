@@ -39,9 +39,10 @@ Open and modify pg_hba.conf file
 >   sudo nano /etc/postgresql/9.4/main/pg_hba.conf
     
 Modify "peer" to "md5" on the line concerning postgres
+
 | Original | Modified |
 |----------| ---------|
-|>   local   all   postgres   peer | >   local   all   postgres   md5 
+|   local   all   postgres   peer |    local   all   postgres   md5 | 
 
 
 >   sudo service postgresql restart
