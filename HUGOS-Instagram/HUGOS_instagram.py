@@ -8,10 +8,10 @@ import numpy as np
 
 """
 -----------------
-HUGOS-Instagram
+HUGOS-HUGOS-Instagram
 -----------------
 
-This tool is used for collecting Instagram data to PostGIS database.
+This tool is used for collecting HUGOS-Instagram data to PostGIS database.
 Tool enables to collect data in a flexible way, i.e. it is possible to distribute the data collection to multiple servers.
 
 Data collection is controlled from 'process_control' table and monitored from 'progress_monitor' table.
@@ -25,7 +25,7 @@ Developer: Henrikki Tenkanen, University of Helsinki, Finland.
 License:
 --------------
 
-HUGOS-Instagram by Accessibility Research Group (University of Helsinki) is licensed under a Creative Commons Attribution 4.0 International License.
+HUGOS-HUGOS-Instagram by Accessibility Research Group (University of Helsinki) is licensed under a Creative Commons Attribution 4.0 International License.
 More information about license: http://creativecommons.org/licenses/by/4.0/
 """
 
@@ -104,7 +104,7 @@ restart_idx = parameters[12]
 low_limit = '2009-01-01T08:00:00'
 lowest_unix = int(time.mktime(datetime.datetime.strptime(low_limit, "%Y-%m-%dT%H:%M:%S").timetuple()))
 
-# Authenticate Instagram 
+# Authenticate HUGOS-Instagram
 api = InstagramAPI(client_id=client, client_secret=secret)
 
 # Read hexagon points
@@ -159,7 +159,7 @@ while True:
                 else:
                     local_tz = pytz.timezone(row['timezone'])
 
-                # Fetch data from Instagram API
+                # Fetch data from HUGOS-Instagram API
                 try:
                     search_result = api.media_search(lat=latitude, lng=longitude,min_timestamp=min_unix, max_timestamp=max_unix, distance=search_radius, count=200) 
 
