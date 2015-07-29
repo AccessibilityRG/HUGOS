@@ -42,4 +42,4 @@ _Exit Python by CNTRL + C._
 >   apt-get install postgresql-9.4-postgis-2.1
 
 ## <a name="5"></a>5. Next steps
-After successful installation of required libraries and Python modules it is time to [configure Postgres/PostGIS database](docs/postgres_config.md).
+After successful installation of required libraries and Python modules it is time to [configure Postgres/PostGIS database](postgres_config.md).
