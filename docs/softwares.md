@@ -39,7 +39,7 @@ Start python and try importing required modules (everything is working if errors
 _Exit Python by CNTRL + D._
 
 ## <a name="4"></a>4. Postgres / PostGIS
->   apt-get install postgresql-9.4-postgis-2.1
+>   apt-get install postgresql-9.4-postgis-2.1 pgadmin3 postgresql-contrib postgis
 
 ## <a name="5"></a>5. Next steps
 After successful installation of required libraries and Python modules it is time to [configure Postgres/PostGIS database](postgres_config.md).
