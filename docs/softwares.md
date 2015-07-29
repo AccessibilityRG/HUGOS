@@ -2,16 +2,22 @@
 
 All following commands are run using the shell. Ubuntu 14.04 is used that has Python 3.4 installed.  
 
-##Update / upgrade system:**
+Contents:
+    1. [Update/Upgrade the system](#1)
+    2. [Install spatial libraries](#2)
+    3. [Install Python related libraries and modules](#3)
+    4. [Install Postgres and PostGIS](#4)
+
+## <a name="1"></a>1. Update / upgrade system:
 >    sudo apt-get upgrade
 
 >    sudo apt-get update
 
 
-##Install spatial libraries:**
+## <a name="2"></a>2. Install spatial libraries:
 >   sudo apt-get install binutils libproj-dev gdal-bin python3-gdal libgdal-dev
 
-## Python
+## <a name="3"></a>3. Python
 
 **Install Python related libraries**
 >   sudo apt-get install python3-pip python-setuptools python-dev libevent-dev gfortran libopenblas-dev liblapack-dev libfreetype6-dev libxft-dev unzip
@@ -34,5 +40,5 @@ Start python and try importing required modules (everything is working if errors
 
 _Exit Python by CNTRL + C._
 
-## Postgres / PostGIS
+## <a name="4"></a>4. Postgres / PostGIS
 
