@@ -2,6 +2,7 @@
 
 HUGOS is a selection of tools to collect and manage social media data from different social media platforms such as Twitter and Instagram (these two at the moment). 
 Tools are programmed in Python and Postgres/PostGIS is used as a backend for storing the data and controlling the data collection process.
+
 It is possible to collect the data using multiple servers simultaneously while controlling everything from a single Postgres table. 
  
 ## Installations & Configurations
