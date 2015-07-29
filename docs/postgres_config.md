@@ -4,6 +4,7 @@ In this document we:
 
 1. [Create a new user for Postgresql database](#1)
 2. [Open the server (database) to 'listen' the world (i.e. enable other servers/computers to insert data to our database)](#2).
+3. [Next steps](#3)
 
 ## <a name="1"><a/>1. Create a new user for Postgresql
 
@@ -52,4 +53,10 @@ Modify "peer" to "md5" on the line concerning postgres
 |----------| ---------|
 | _local   all   postgres   peer_ | _local   all   postgres   md5_ | 
 
+Restart the database
+>   sudo /etc/init.d/postgresql restart
 
+## <a name="3"><a/>3. Next steps
+
+After these database configurations we can create a new database for social media data and necessary tables to store the data and control/manage the data collection process. 
+[Continue and read the docs here.](  
