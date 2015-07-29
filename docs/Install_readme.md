@@ -8,15 +8,14 @@ Following docs shows how to set up everything using Ubuntu (Linux) operation sys
 - Python 3.4 and modules listed in [table below](#PythonModules).
    
 ### How to?
-- Install all required softwares and Python modules 
-- Configure Postgres/PostGIS
+- [Install all required softwares and Python modules](softwares.md) 
+- [Configure Postgres/PostGIS](postgres_config.md)
 - Create Postgres/PostGIS database for:
     - Instagram
     - Twitter
 - Create process control and monitor tables for:
     - Instagram
     - Twitter
-
 
 ### <a name="PythonModules"></a>Required Python modules:
 
