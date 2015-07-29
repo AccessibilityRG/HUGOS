@@ -10,7 +10,7 @@ Setting up a (Linux Ubuntu) server and installing necessary softwares. Configuri
 
 ## HUGOS consist of the following tools:
 
-### [HUGOS-Instagram](HUGOS-Instagram/README.md)
+### [HUGOS-Instagram](HUGOS-Instagram)
 HUGOS-Instagram is a tool for collecting Instagram data into PostGIS database.
 
 ### [HUGOS-Twitter](HUGOS-Twitter/README.md)
