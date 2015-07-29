@@ -13,11 +13,11 @@
 **Create table for controlling the data collection**
 > CREATE TABLE process_control(
 
->  id serial PRIMARY KEY,
+>       id serial PRIMARY KEY,
 
->  instance_name TEXT,
+>       instance_name TEXT,
 
->  input_shapefile TEXT,
+>       input_shapefile TEXT,
 
 >  insta_client TEXT,
 
@@ -32,11 +32,17 @@
 >  time_sequence INTEGER,
 
 >  start_position INTEGER,
+
 >  end_position INTEGER,
+
 >  stop_at_end BOOLEAN,
+
 >  commit_sequence INTEGER,
+
 >  skip_time INTEGER,
+
 >  restart_position INTEGER
+
 >  );
 
 Create a table for monitoring
