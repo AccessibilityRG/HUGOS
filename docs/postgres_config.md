@@ -42,7 +42,7 @@ Modify "peer" to "md5" on the line concerning postgres
 
 | Original | Modified |
 |----------| ---------|
-|   local   all   postgres   peer |    local   all   postgres   md5 | 
+|<   local   all   postgres   peer |<    local   all   postgres   md5 | 
 
 
 >   sudo service postgresql restart
