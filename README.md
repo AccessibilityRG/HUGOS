@@ -9,7 +9,6 @@ It is possible to collect the data using multiple servers simultaneously while c
 Setting up a (Linux) server (using Amazon Web Services - AWS) and installing necessary softwares. Configuring PostGIS database for data collection.
 
 ## HUGOS consist of following tools:
-
 ### HUGOS-Instagram
 HUGOS-Instagram is a tool for collecting Instagram data into PostGIS database.
 
