@@ -2,15 +2,16 @@
 
 All following commands are run using the shell. Ubuntu 14.04 is used that has Python 3.4 installed.  
 
-**Update / upgrade system:**
+##Update / upgrade system:**
 >    sudo apt-get upgrade
 
 >    sudo apt-get update
 
 
-**Install spatial libraries:**
+##Install spatial libraries:**
 >   sudo apt-get install binutils libproj-dev gdal-bin python3-gdal libgdal-dev
 
+## Python
 
 **Install Python related libraries**
 >   sudo apt-get install python3-pip python-setuptools python-dev libevent-dev gfortran libopenblas-dev liblapack-dev libfreetype6-dev libxft-dev unzip
@@ -25,11 +26,13 @@ _Pip3 does not work properly after installing tweepy --> reinstall:_
 
 **Test that Python and the modules are working properly**
 
-_Start python:_
->   python3 
+_Start python and try importing required modules (everything is working if errors are not occurring):_
+>   $python3 
+>   > import geopandas, fiona, psycopg2, shapely, pytz, numpy, tweepy, instagram, pyproj
 
-_Try importing required modules (everything is working if errors are not occurring):_
->   import geopandas, fiona, psycopg2, shapely, pytz, numpy, tweepy, instagram, pyproj
+
 
 _Exit Python by CNTRL + C._
+
+## Postgres / PostGIS
 
