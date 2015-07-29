@@ -14,9 +14,7 @@
 > CREATE TABLE process_control(
 
 >      id serial PRIMARY KEY,
-
 >      instance_name TEXT,
-
 >      input_shapefile TEXT,
 
 >  insta_client TEXT,
