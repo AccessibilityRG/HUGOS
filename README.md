@@ -5,14 +5,15 @@ Tools are programmed in Python and Postgres/PostGIS is used as a backend for sto
 
 It is possible to collect the data using multiple servers simultaneously while controlling everything from a single Postgres table. 
  
-## Installations & Configurations
-Setting up a (Linux) server and installing necessary softwares. Configuring PostGIS database for data collection.
+## [Installations & Configurations](docs/Install_readme.md)
+Setting up a (Linux Ubuntu) server and installing necessary softwares. Configuring PostGIS database for data collection.
 
 ## HUGOS consist of following tools:
-### HUGOS-Instagram
+
+### [HUGOS-Instagram](HUGOS-Instagram/Insta_readme.md)
 HUGOS-Instagram is a tool for collecting Instagram data into PostGIS database.
 
-### HUGOS-Twitter
+### [HUGOS-Twitter](HUGOS-Twitter/Twitter_readme.md)
 HUGOS-Twitter is a tool for collecting Twitter data into PostGIS database.
 
 ### AWS-tools
