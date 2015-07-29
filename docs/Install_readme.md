@@ -12,7 +12,9 @@ Following docs shows how to set up everything.
 - Create Postgres/PostGIS database for:
     - Instagram
     - Twitter
- 
+- Create process control and monitor tables for:
+    - Instagram
+    - Twitter
 
 
 ### <a name="PythonModules"></a>Required Python modules:
