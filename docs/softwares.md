@@ -7,12 +7,12 @@ All following commands are run using the shell. Ubuntu 14.04 is used that has Py
 2. [Install spatial libraries](#2)
 3. [Install Python related libraries and modules](#3)
 4. [Install Postgres and PostGIS](#4)
+5. [Next steps](#5)
 
 ## <a name="1"></a>1. Update / upgrade system:
 >    sudo apt-get upgrade
 
 >    sudo apt-get update
-
 
 ## <a name="2"></a>2. Install spatial libraries:
 >   sudo apt-get install binutils libproj-dev gdal-bin python3-gdal libgdal-dev
@@ -36,9 +36,10 @@ Start python and try importing required modules (everything is working if errors
 >   $python3 
 >   > import geopandas, fiona, psycopg2, shapely, pytz, numpy, tweepy, instagram, pyproj
 
-
-
 _Exit Python by CNTRL + C._
 
 ## <a name="4"></a>4. Postgres / PostGIS
+>   apt-get install postgresql-9.4-postgis-2.1
 
+## <a name="5"></a>5. Next steps
+After successful installation of required libraries and Python modules it is time to [configure Postgres/PostGIS database](docs/postgres_config.md).
