@@ -8,7 +8,7 @@ import numpy as np
 
 """
 -----------------
-HUGOS-HUGOS-Instagram
+HUGOS-Instagram
 -----------------
 
 This tool is used for collecting HUGOS-Instagram data to PostGIS database.
