@@ -28,7 +28,8 @@ _Pip3 does not work properly after installing tweepy --> reinstall:_
 _Start python:_
 >   python3 
 
-_Try importing required modules:_
+_Try importing required modules (everything is working if errors are not occurring):_
 >   import geopandas, fiona, psycopg2, shapely, pytz, numpy, tweepy, instagram, pyproj
 
 _Exit Python by CNTRL + C._
+
