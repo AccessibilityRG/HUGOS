@@ -1,6 +1,6 @@
 # Installations & Configurations
 
-Following docs shows how to set up everything using Ubuntu (Linux) operation system. If you don't have Ubuntu computer available consider using e.g. Amazon Web Services (more information here).
+Following docs shows how to set up everything using Ubuntu (Linux) operation system. If you don't have Ubuntu computer available consider using e.g. Amazon Web Services ([more information here](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EC2_GetStarted.html)).
 
 **Using HUGOS tools requires following softwares and Python modules (all open source):**
 - Postgres 9.4
