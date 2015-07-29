@@ -17,5 +17,5 @@ HUGOS-Instagram is a tool for collecting Instagram data into PostGIS database.
 HUGOS-Twitter is a tool for collecting Twitter data into PostGIS database.
 
 ### AWS-tools
-Practical tools for working with Amazon Web Services (e.g. creating new instances etc.) 
+Convenience scripts for working with Amazon Web Services (e.g. creating new instances etc.) 
 
