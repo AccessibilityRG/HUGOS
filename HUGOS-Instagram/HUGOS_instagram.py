@@ -1,6 +1,6 @@
 from instagram.client import InstagramAPI
 import sys,time,datetime
-from base import POSTGIS_DB_NAME, AWS_IP_ADDRESS, POSTGIS_PORT, POSTGIS_USERNAME, POSTGIS_PWD, INSTANCE_NAME
+from base import POSTGIS_DB_NAME, AWS_IP_ADDRESS, POSTGIS_PORT, POSTGIS_USERNAME, POSTGIS_PWD, INSTANCE_NAME, MONITOR_TABLE, CONTROL_TABLE
 import geopandas as gpd
 import psycopg2
 import pytz
@@ -14,8 +14,8 @@ HUGOS-Instagram
 This tool is used for collecting HUGOS-Instagram data to PostGIS database.
 Tool enables to collect data in a flexible way, i.e. it is possible to distribute the data collection to multiple servers.
 
-Data collection is controlled from 'process_control' table and monitored from 'progress_monitor' table.
-Server details are controlled and read from the base.py file.
+Server details and database parameters are controlled and read from the base.py file.
+Data collection is controlled and monitored using tables that are determined with MONITOR_TABLE and CONTROL_TABLE parameters in base.py.
 Read the docs for further information and requirements.
 
 Copyright (C) 2015  Accessibility Research Group (Tenkanen).
@@ -37,7 +37,7 @@ def connect_to_DB(host, db_name, username, pwd, port):
     return(conn, cursor)
 
 def track_progress_row(instance_name, shapefile, time, min_datetime, max_datetime):
-    sql = "SELECT id FROM progress_monitor WHERE instance_name = '%s' AND input_shapefile = '%s' AND date(time) = '%s' AND min_time = '%s' AND max_time = '%s'" % (instance_name, shapefile, time.date().isoformat(), min_datetime.isoformat(), max_datetime.isoformat())
+    sql = "SELECT id FROM %s WHERE instance_name = '%s' AND input_shapefile = '%s' AND date(time) = '%s' AND min_time = '%s' AND max_time = '%s'" % (MONITOR_TABLE, instance_name, shapefile, time.date().isoformat(), min_datetime.isoformat(), max_datetime.isoformat())
     cursor.execute(sql)
     return cursor.fetchone()
 
@@ -49,11 +49,10 @@ def updateProgress(conn, instance_name, input_shape, min_datetime, max_datetime,
     percentage = float(np.round((int(index)-int(start_position))/(int(end_position)-int(start_position)), 2))
 
     if not progress_id:
-        cursor.execute("INSERT INTO progress_monitor (time, instance_name, min_time, max_time, current_status, end_position, percentage, total_rows, input_shapefile) \
-                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (current_time, instance_name, min_datetime, max_datetime, int(index), int(end_position), percentage, int(total_rows),  input_shape))
-       
+        cursor.execute("INSERT INTO %s (time, instance_name, min_time, max_time, current_status, end_position, percentage, total_rows, input_shapefile) \
+                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (MONITOR_TABLE, current_time, instance_name, min_datetime, max_datetime, int(index), int(end_position), percentage, int(total_rows),  input_shape))
     else:
-        cursor.execute("UPDATE progress_monitor SET time = '%s', current_status = %s, percentage = %s WHERE id = %s" % (current_time, int(index), percentage, progress_id[0]))
+        cursor.execute("UPDATE %s SET time = '%s', current_status = %s, percentage = %s WHERE id = %s" % (MONITOR_TABLE, current_time, int(index), percentage, progress_id[0]))
 
     # Commit changes
     conn.commit()
@@ -77,7 +76,7 @@ conn, cursor = connect_to_DB(host, db_name, username, pwd, port)
 instance_name = INSTANCE_NAME
 
 # Get Parameters from database
-sql = "SELECT input_shapefile, insta_client, insta_secret, min_time, max_time, search_radius, time_sequence, start_position, end_position, stop_at_end, commit_sequence, skip_time, restart_position FROM process_control WHERE instance_name = '%s'" % (instance_name)
+sql = "SELECT input_shapefile, insta_client, insta_secret, min_time, max_time, search_radius, time_sequence, start_position, end_position, stop_at_end, commit_sequence, skip_time, restart_position FROM %s WHERE instance_name = '%s'" % (CONTROL_TABLE, instance_name)
 cursor.execute(sql)
 parameters = cursor.fetchall()[0]
 
