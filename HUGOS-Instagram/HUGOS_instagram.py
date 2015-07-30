@@ -1,6 +1,6 @@
 from instagram.client import InstagramAPI
 import sys,time,datetime
-from base import POSTGIS_DB_NAME, AWS_IP_ADDRESS, POSTGIS_PORT, POSTGIS_USERNAME, POSTGIS_PWD, INSTANCE_NAME, MONITOR_TABLE, CONTROL_TABLE
+from base import POSTGIS_DB_NAME, AWS_IP_ADDRESS, POSTGIS_PORT, POSTGIS_USERNAME, POSTGIS_PWD, INSTANCE_NAME, MONITOR_TABLE, CONTROL_TABLE, DATA_TABLE
 import geopandas as gpd
 import psycopg2
 import pytz
@@ -14,7 +14,7 @@ HUGOS-Instagram
 This tool is used for collecting HUGOS-Instagram data to PostGIS database.
 Tool enables to collect data in a flexible way, i.e. it is possible to distribute the data collection to multiple servers.
 
-Server details and database parameters are controlled and read from the base.py file.
+Server connection details and database parameters are controlled and read from the base.py file.
 Data collection is controlled and monitored using tables that are determined with MONITOR_TABLE and CONTROL_TABLE parameters in base.py.
 Read the docs for further information and requirements.
 
@@ -49,8 +49,9 @@ def updateProgress(conn, instance_name, input_shape, min_datetime, max_datetime,
     percentage = float(np.round((int(index)-int(start_position))/(int(end_position)-int(start_position)), 2))
 
     if not progress_id:
-        cursor.execute("INSERT INTO %s (time, instance_name, min_time, max_time, current_status, end_position, percentage, total_rows, input_shapefile) \
-                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (MONITOR_TABLE, current_time, instance_name, min_datetime, max_datetime, int(index), int(end_position), percentage, int(total_rows),  input_shape))
+        insert_cmd = "INSERT INTO %s" % MONITOR_TABLE
+        cursor.execute(insert_cmd + "(time, instance_name, min_time, max_time, current_status, end_position, percentage, total_rows, input_shapefile) \
+                       VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)", (current_time, instance_name, min_datetime, max_datetime, int(index), int(end_position), percentage, int(total_rows),  input_shape))
     else:
         cursor.execute("UPDATE %s SET time = '%s', current_status = %s, percentage = %s WHERE id = %s" % (MONITOR_TABLE, current_time, int(index), percentage, progress_id[0]))
 
@@ -59,7 +60,7 @@ def updateProgress(conn, instance_name, input_shape, min_datetime, max_datetime,
 
 def resetRestartIdx(conn, instance_name):
     restart_pos = 'NULL'
-    cursor.execute("UPDATE process_control SET restart_position = %s WHERE instance_name = '%s';" % (restart_pos, instance_name))
+    cursor.execute("UPDATE %s SET restart_position = %s WHERE instance_name = '%s';" % (CONTROL_TABLE, restart_pos, instance_name))
     conn.commit()
     
 ###############################
@@ -176,8 +177,9 @@ while True:
                             local_time = utc_timezone.astimezone(local_tz).isoformat()
 
                             text, medialink = media.caption.text, media.link
-                                                                                    
-                            cursor.execute("INSERT INTO instagram (userid, username, fullname, text, time_utc, time_local, latitude, longitude, geom, likes, photourl, photoid, medialink, bio, place_id, hex_id) \
+
+                            insert_cmd = "INSERT INTO %s" % DATA_TABLE
+                            cursor.execute(insert_cmd + "(userid, username, fullname, text, time_utc, time_local, latitude, longitude, geom, likes, photourl, photoid, medialink, bio, place_id, hex_id) \
                                            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, ST_GeomFromText(%s, 4326), %s, %s, %s, %s, %s, %s, %s)",
                                            (userid, username, fullname, text, utc_time, local_time, latitude, longitude, coords, likes,
                                             photourl, photoid, medialink, bio, place_id, hex_id))
